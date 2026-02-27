@@ -17,11 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include=".git\hooks\" />
     <Folder Include="Routes\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".git\hooks\pre-commit" />
   </ItemGroup>
 
 </Project>
