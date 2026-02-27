@@ -11,9 +11,15 @@ builder.Services.AddDbContext<NexaWorksContext>(options =>
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
 
+builder.Services.AddScoped<DataSeeder>();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+    seeder.Seed();
+}
 
 if (app.Environment.IsDevelopment())
 {

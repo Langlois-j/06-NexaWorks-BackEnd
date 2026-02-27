@@ -56,11 +56,18 @@ namespace _06_NexaWorks_BackEnd.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NomVersion = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    NomVersion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IdProduit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_VersionProduit", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_VersionProduit_Produit_IdProduit",
+                        column: x => x.IdProduit,
+                        principalTable: "Produit",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -85,26 +92,22 @@ namespace _06_NexaWorks_BackEnd.Migrations
                         name: "FK_Tickets_OS_IdOS",
                         column: x => x.IdOS,
                         principalTable: "OS",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tickets_Produit_IdProduit",
                         column: x => x.IdProduit,
                         principalTable: "Produit",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tickets_Statuts_IdStatut",
                         column: x => x.IdStatut,
                         principalTable: "Statuts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Tickets_VersionProduit_IdVersionProduit",
                         column: x => x.IdVersionProduit,
                         principalTable: "VersionProduit",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -154,6 +157,11 @@ namespace _06_NexaWorks_BackEnd.Migrations
                 column: "IdVersionProduit");
 
             migrationBuilder.CreateIndex(
+                name: "IX_VersionProduit_IdProduit",
+                table: "VersionProduit",
+                column: "IdProduit");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_VersionProduitOS_IdOS",
                 table: "VersionProduitOS",
                 column: "IdOS");
@@ -174,9 +182,6 @@ namespace _06_NexaWorks_BackEnd.Migrations
                 name: "VersionProduitOS");
 
             migrationBuilder.DropTable(
-                name: "Produit");
-
-            migrationBuilder.DropTable(
                 name: "Statuts");
 
             migrationBuilder.DropTable(
@@ -184,6 +189,9 @@ namespace _06_NexaWorks_BackEnd.Migrations
 
             migrationBuilder.DropTable(
                 name: "VersionProduit");
+
+            migrationBuilder.DropTable(
+                name: "Produit");
         }
     }
 }

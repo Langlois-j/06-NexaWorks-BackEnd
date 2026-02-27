@@ -12,7 +12,7 @@ using _06_NexaWorks_BackEnd.Data;
 namespace _06_NexaWorks_BackEnd.Migrations
 {
     [DbContext(typeof(NexaWorksContext))]
-    [Migration("20260227082156_InitialCreate")]
+    [Migration("20260227132351_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -130,11 +130,16 @@ namespace _06_NexaWorks_BackEnd.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("IdProduit")
+                        .HasColumnType("int");
+
                     b.Property<string>("NomVersion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdProduit");
 
                     b.ToTable("VersionProduit");
                 });
@@ -167,25 +172,25 @@ namespace _06_NexaWorks_BackEnd.Migrations
                     b.HasOne("_06_NexaWorks_BackEnd.Models.OS", "OS")
                         .WithMany()
                         .HasForeignKey("IdOS")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_06_NexaWorks_BackEnd.Models.Produit", "Produit")
                         .WithMany()
                         .HasForeignKey("IdProduit")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_06_NexaWorks_BackEnd.Models.Statut", "Statut")
                         .WithMany()
                         .HasForeignKey("IdStatut")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("_06_NexaWorks_BackEnd.Models.VersionProduit", "VersionProduit")
                         .WithMany()
                         .HasForeignKey("IdVersionProduit")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("OS");
@@ -195,6 +200,17 @@ namespace _06_NexaWorks_BackEnd.Migrations
                     b.Navigation("Statut");
 
                     b.Navigation("VersionProduit");
+                });
+
+            modelBuilder.Entity("_06_NexaWorks_BackEnd.Models.VersionProduit", b =>
+                {
+                    b.HasOne("_06_NexaWorks_BackEnd.Models.Produit", "Produit")
+                        .WithMany()
+                        .HasForeignKey("IdProduit")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Produit");
                 });
 
             modelBuilder.Entity("_06_NexaWorks_BackEnd.Models.VersionProduitOS", b =>
