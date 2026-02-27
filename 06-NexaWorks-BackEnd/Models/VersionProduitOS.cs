@@ -12,7 +12,7 @@ namespace _06_NexaWorks_BackEnd.Models
         public int IdVersionProduit { get; set; }
 
         [ForeignKey("OS")]
-        public int IdOS { get; set; }
+        public int IdOs { get; set; }
 
         public VersionProduit VersionProduit { get; set; }
         public OS OS { get; set; }

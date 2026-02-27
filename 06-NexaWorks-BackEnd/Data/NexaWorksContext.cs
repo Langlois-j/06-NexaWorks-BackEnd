@@ -34,7 +34,7 @@ namespace _06_NexaWorks_BackEnd.Data
             modelBuilder.Entity<Ticket>()
                 .HasOne(t => t.OS)
                 .WithMany()
-                .HasForeignKey(t => t.IdOS)
+                .HasForeignKey(t => t.IdOs)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Ticket>()
