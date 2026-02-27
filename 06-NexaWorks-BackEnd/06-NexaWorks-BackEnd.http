@@ -1,0 +1,6 @@
+@_06_NexaWorks_BackEnd_HostAddress = http://localhost:5166
+
+GET {{_06_NexaWorks_BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
