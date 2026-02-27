@@ -15,6 +15,6 @@ namespace _06_NexaWorks_BackEnd.Models
         public int IdOS { get; set; }
 
         public VersionProduit VersionProduit { get; set; }
-        public Os Os { get; set; }
+        public OS OS { get; set; }
     }
 }
