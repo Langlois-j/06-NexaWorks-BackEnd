@@ -20,7 +20,7 @@ namespace _06_NexaWorks_BackEnd.Models
         [ForeignKey("Statut")]
         public int IdStatut { get; set; }
 
-        public  DateOnly CreationDate { get; set; }
+        public DateOnly CreationDate { get; set; }
 
         public DateOnly? ResolutionDate { get; set; }
 

@@ -20,4 +20,8 @@
     <Folder Include="Routes\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".git\hooks\pre-commit" />
+  </ItemGroup>
+
 </Project>

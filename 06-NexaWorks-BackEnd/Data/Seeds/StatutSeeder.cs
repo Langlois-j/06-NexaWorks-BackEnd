@@ -18,8 +18,8 @@ namespace _06_NexaWorks_BackEnd.Data.Seeds
             if (!_context.Statuts.Any())
             {
                 _context.Statuts.AddRange(
-     new Statut { NomStatut = "En cours" },
-     new Statut { NomStatut = "Résolu" });
+                    new Statut { NomStatut = "En cours" },
+                    new Statut { NomStatut = "Résolu" });
                 _context.SaveChanges();
             }
         }

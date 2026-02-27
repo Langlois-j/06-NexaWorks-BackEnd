@@ -42,11 +42,12 @@ namespace _06_NexaWorks_BackEnd.Data
                 .WithMany()
                 .HasForeignKey(t => t.IdStatut)
                 .OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<VersionProduit>()
-    .HasOne(v => v.Produit)
-    .WithMany()
-    .HasForeignKey(v => v.IdProduit)
-    .OnDelete(DeleteBehavior.NoAction);
+                .HasOne(v => v.Produit)
+                .WithMany()
+                .HasForeignKey(v => v.IdProduit)
+                .OnDelete(DeleteBehavior.NoAction);
         }
     }
 }

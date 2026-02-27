@@ -7,7 +7,7 @@ namespace _06_NexaWorks_BackEnd.Models
     {
         [Key]
         public int Id { get; set; }
-        public string NomVersion{ get; set; }
+        public string NomVersion { get; set; }
         [ForeignKey("Produit")]
         public int IdProduit { get; set; }
 
