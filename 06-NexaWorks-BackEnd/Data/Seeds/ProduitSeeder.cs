@@ -14,9 +14,9 @@ namespace _06_NexaWorks_BackEnd.Data.Seeds
 
         public void Seed()
         {
-            if (!_context.Produit.Any())
+            if (!_context.Produits.Any())
             {
-                _context.Produit.AddRange(
+                _context.Produits.AddRange(
                     new Produit { NomProduit = "Trader en Herbe" },
                     new Produit { NomProduit = "Maître des Investissements" },
                     new Produit { NomProduit = "Planificateur d'Entraînement" },

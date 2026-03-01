@@ -13,14 +13,14 @@ namespace _06_NexaWorks_BackEnd.Data.Seeds
 
         public void Seed()
         {
-            if (!_context.VersionProduit.Any())
+            if (!_context.VersionProduits.Any())
             {
-                var traderHerbe = _context.Produit.First(p => p.NomProduit == "Trader en Herbe");
-                var maitreInvest = _context.Produit.First(p => p.NomProduit == "Maître des Investissements");
-                var planifEntrain = _context.Produit.First(p => p.NomProduit == "Planificateur d'Entraînement");
-                var planifAnxiete = _context.Produit.First(p => p.NomProduit == "Planificateur d'Anxiété Sociale");
+                var traderHerbe = _context.Produits.First(p => p.NomProduit == "Trader en Herbe");
+                var maitreInvest = _context.Produits.First(p => p.NomProduit == "Maître des Investissements");
+                var planifEntrain = _context.Produits.First(p => p.NomProduit == "Planificateur d'Entraînement");
+                var planifAnxiete = _context.Produits.First(p => p.NomProduit == "Planificateur d'Anxiété Sociale");
 
-                _context.VersionProduit.AddRange(
+                _context.VersionProduits.AddRange(
                     new VersionProduit { NomVersion = "1.0", IdProduit = traderHerbe.Id },
                     new VersionProduit { NomVersion = "1.1", IdProduit = traderHerbe.Id },
                     new VersionProduit { NomVersion = "1.2", IdProduit = traderHerbe.Id },

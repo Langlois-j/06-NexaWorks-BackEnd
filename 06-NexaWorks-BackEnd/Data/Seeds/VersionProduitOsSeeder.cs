@@ -17,21 +17,21 @@ namespace _06_NexaWorks_BackEnd.Data.Seeds
             {
                 // Récupération des versions par produit
                 // On utilise le nom du produit pour identifier la bonne version
-                var th10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Trader en Herbe");
-                var th11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Trader en Herbe");
-                var th12 = _context.VersionProduit.First(v => v.NomVersion == "1.2" && v.Produit.NomProduit == "Trader en Herbe");
-                var th13 = _context.VersionProduit.First(v => v.NomVersion == "1.3" && v.Produit.NomProduit == "Trader en Herbe");
+                var th10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Trader en Herbe");
+                var th11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Trader en Herbe");
+                var th12 = _context.VersionProduits.First(v => v.NomVersion == "1.2" && v.Produit.NomProduit == "Trader en Herbe");
+                var th13 = _context.VersionProduits.First(v => v.NomVersion == "1.3" && v.Produit.NomProduit == "Trader en Herbe");
 
-                var mi10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Maître des Investissements");
-                var mi20 = _context.VersionProduit.First(v => v.NomVersion == "2.0" && v.Produit.NomProduit == "Maître des Investissements");
-                var mi21 = _context.VersionProduit.First(v => v.NomVersion == "2.1" && v.Produit.NomProduit == "Maître des Investissements");
+                var mi10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Maître des Investissements");
+                var mi20 = _context.VersionProduits.First(v => v.NomVersion == "2.0" && v.Produit.NomProduit == "Maître des Investissements");
+                var mi21 = _context.VersionProduits.First(v => v.NomVersion == "2.1" && v.Produit.NomProduit == "Maître des Investissements");
 
-                var pe10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Planificateur d'Entraînement");
-                var pe11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Planificateur d'Entraînement");
-                var pe20 = _context.VersionProduit.First(v => v.NomVersion == "2.0" && v.Produit.NomProduit == "Planificateur d'Entraînement");
+                var pe10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Planificateur d'Entraînement");
+                var pe11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Planificateur d'Entraînement");
+                var pe20 = _context.VersionProduits.First(v => v.NomVersion == "2.0" && v.Produit.NomProduit == "Planificateur d'Entraînement");
 
-                var pa10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Planificateur d'Anxiété Sociale");
-                var pa11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Planificateur d'Anxiété Sociale");
+                var pa10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.Produit.NomProduit == "Planificateur d'Anxiété Sociale");
+                var pa11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.Produit.NomProduit == "Planificateur d'Anxiété Sociale");
 
                 // Récupération des OS
                 var windows = _context.OS.First(o => o.NomOS == "Windows");

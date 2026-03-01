@@ -10,8 +10,8 @@ namespace _06_NexaWorks_BackEnd.Data
         {
         }
 
-        public DbSet<Produit> Produit { get; set; }
-        public DbSet<VersionProduit> VersionProduit { get; set; }
+        public DbSet<Produit> Produits { get; set; }
+        public DbSet<VersionProduit> VersionProduits { get; set; }
         public DbSet<OS> OS { get; set; }
         public DbSet<VersionProduitOS> VersionProduitOS { get; set; }
         public DbSet<Statut> Statuts { get; set; }

@@ -28,23 +28,23 @@ namespace _06_NexaWorks_BackEnd.Data.Seeds
                 var enCours = _context.Statuts.First(s => s.NomStatut == "En cours");
                 var resolu = _context.Statuts.First(s => s.NomStatut == "Résolu");
 
-                var traderHerbe = _context.Produit.First(p => p.NomProduit == "Trader en Herbe");
-                var maitreInvest = _context.Produit.First(p => p.NomProduit == "Maître des Investissements");
-                var planifEntrain = _context.Produit.First(p => p.NomProduit == "Planificateur d'Entraînement");
-                var planifAnxiete = _context.Produit.First(p => p.NomProduit == "Planificateur d'Anxiété Sociale");
+                var traderHerbe = _context.Produits.First(p => p.NomProduit == "Trader en Herbe");
+                var maitreInvest = _context.Produits.First(p => p.NomProduit == "Maître des Investissements");
+                var planifEntrain = _context.Produits.First(p => p.NomProduit == "Planificateur d'Entraînement");
+                var planifAnxiete = _context.Produits.First(p => p.NomProduit == "Planificateur d'Anxiété Sociale");
 
-                var th10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.IdProduit == traderHerbe.Id);
-                var th11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.IdProduit == traderHerbe.Id);
-                var th12 = _context.VersionProduit.First(v => v.NomVersion == "1.2" && v.IdProduit == traderHerbe.Id);
-                var th13 = _context.VersionProduit.First(v => v.NomVersion == "1.3" && v.IdProduit == traderHerbe.Id);
-                var mi10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.IdProduit == maitreInvest.Id);
-                var mi20 = _context.VersionProduit.First(v => v.NomVersion == "2.0" && v.IdProduit == maitreInvest.Id);
-                var mi21 = _context.VersionProduit.First(v => v.NomVersion == "2.1" && v.IdProduit == maitreInvest.Id);
-                var pe10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.IdProduit == planifEntrain.Id);
-                var pe11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.IdProduit == planifEntrain.Id);
-                var pe20 = _context.VersionProduit.First(v => v.NomVersion == "2.0" && v.IdProduit == planifEntrain.Id);
-                var pa10 = _context.VersionProduit.First(v => v.NomVersion == "1.0" && v.IdProduit == planifAnxiete.Id);
-                var pa11 = _context.VersionProduit.First(v => v.NomVersion == "1.1" && v.IdProduit == planifAnxiete.Id);
+                var th10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.IdProduit == traderHerbe.Id);
+                var th11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.IdProduit == traderHerbe.Id);
+                var th12 = _context.VersionProduits.First(v => v.NomVersion == "1.2" && v.IdProduit == traderHerbe.Id);
+                var th13 = _context.VersionProduits.First(v => v.NomVersion == "1.3" && v.IdProduit == traderHerbe.Id);
+                var mi10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.IdProduit == maitreInvest.Id);
+                var mi20 = _context.VersionProduits.First(v => v.NomVersion == "2.0" && v.IdProduit == maitreInvest.Id);
+                var mi21 = _context.VersionProduits.First(v => v.NomVersion == "2.1" && v.IdProduit == maitreInvest.Id);
+                var pe10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.IdProduit == planifEntrain.Id);
+                var pe11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.IdProduit == planifEntrain.Id);
+                var pe20 = _context.VersionProduits.First(v => v.NomVersion == "2.0" && v.IdProduit == planifEntrain.Id);
+                var pa10 = _context.VersionProduits.First(v => v.NomVersion == "1.0" && v.IdProduit == planifAnxiete.Id);
+                var pa11 = _context.VersionProduits.First(v => v.NomVersion == "1.1" && v.IdProduit == planifAnxiete.Id);
 
                 _context.Tickets.AddRange(
 
