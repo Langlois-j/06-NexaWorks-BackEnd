@@ -45,7 +45,7 @@
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (toutes les versions)
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (une seule version)
 
-int? statutId = 1;
+int? statutId = null;
 int? produitId = null;
 int? versionId = null;
 
@@ -79,6 +79,7 @@ var result = (from T in Tickets
               &&    (fermetureDateDebutPeriode == null || T.ResolutionDate >= fermetureDateDebutPeriode)
               &&    (fermetureDateFinPeriode == null   || T.ResolutionDate <= fermetureDateFinPeriode)
               &&    (fermetureMotCleNorm == null || T.ResolutionTexte.ToLower().Contains(fermetureMotCleNorm))
+			  
               select new
               {
                   T.Id,
