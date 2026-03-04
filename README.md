@@ -130,7 +130,7 @@ Au premier démarrage, le **DataSeeder** insère automatiquement les données de
 
 ## Requêtes LINQ
 
-Les requêtes se trouvent dans le dossier `Requettes/` et s'ouvrent avec **LinqPad 9**.
+Les requêtes se trouvent dans le dossier `Requetes/` et s'ouvrent avec **LinqPad 9**.
 
 ### Configuration LinqPad
 
@@ -149,8 +149,7 @@ Connection → Add connection
 | Fichier | Statut fixe | Cas d'usage couverts |
 |---|---|---|
 | `ToutEnUn.linq` | Paramétrable | 20 combinaisons |
-| `Encours.linq` | En cours (Id=1) | 10 combinaisons |
-| `Resolut.linq` | Résolu (Id=2) | 10 combinaisons |
+
 
 ### Paramètres disponibles
 
@@ -160,10 +159,10 @@ int? produitId = null;                          // null=tous les produits
 int? versionId = null;                          // null=toutes les versions
 DateOnly? ouvertureDateDebutPeriode = null;     // Date création minimale
 DateOnly? ouvertureDateFinPeriode = null;       // Date création maximale
-string? ouvertureMotCle = null;                 // Mot-clé dans la description
+List<string>? ouvertureMotCle = null;           // Mot-clé dans la description
 DateOnly? fermetureDateDebutPeriode = null;     // Date résolution minimale
 DateOnly? fermetureDateFinPeriode = null;       // Date résolution maximale
-string? fermetureMotCle = null;                 // Mot-clé dans la résolution
+List<string>? fermetureMotCle = null;           // Mot-clé dans la résolution
 ```
 
 ---
