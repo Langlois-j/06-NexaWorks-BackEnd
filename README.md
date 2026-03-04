@@ -22,7 +22,8 @@ NexaWorks édite plusieurs produits logiciels disponibles sur différents systè
 ```mermaid
 erDiagram
     PRODUIT ||--o{ VERSION : "possède (1,1 / 1,N)"
-    VERSION }o--o{ SYSTEME_EXPLOITATION : "compatible (0,N / 0,N)"
+    VERSION ||--o{ VERSION_OS : "associée à (1,1 / 0,N)"
+    SYSTEME_EXPLOITATION ||--o{ VERSION_OS : "associée à (1,1 / 0,N)"
     VERSION ||--o{ TICKET : "concerne (1,1 / 0,N)"
     SYSTEME_EXPLOITATION ||--o{ TICKET : "survient sur (1,1 / 0,N)"
     PRODUIT ||--o{ TICKET : "lié à (1,1 / 0,N)"
