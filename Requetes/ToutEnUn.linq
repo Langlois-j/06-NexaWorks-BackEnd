@@ -45,7 +45,7 @@
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (toutes les versions)
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (une seule version)
 
-int? statutId = 2;
+int? statutId = null;
 int? produitId = null;
 int? versionId = null;
 
@@ -59,14 +59,20 @@ DateOnly? fermetureDateDebutPeriode = null;
 DateOnly? fermetureDateFinPeriode = null;
 List<string>? fermetureMotCle = null;
 
+
+// Zone popur saisie des parametres pour saisie manuelle Cf documentation de la base de données.
+
+
+
+
 // Normalisation des mots-clés AVANT la requête
 List<string>? ouvertureMotCleNorm = ouvertureMotCle?
 	.Where(m => !string.IsNullOrWhiteSpace(m)) 
-    .Select(m => m.ToLower())
+    .Select(m => m.Trim().ToLower())
     .ToList();
 List<string>? fermetureMotCleNorm = fermetureMotCle?
 	.Where(m => !string.IsNullOrWhiteSpace(m)) 
-    .Select(m => m.ToLower())
+    .Select(m => m.Trim().ToLower())
     .ToList();
 
 var query = (from T in Tickets
