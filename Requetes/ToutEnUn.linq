@@ -45,50 +45,63 @@
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (toutes les versions)
 //Obtenir tous les problèmes résolus au cours d’une période donnée pour un produit contenant une liste de mots-clés (une seule version)
 
-int? statutId = null;
+int? statutId = 2;
 int? produitId = null;
 int? versionId = null;
 
 // Ouverture
 DateOnly? ouvertureDateDebutPeriode = null;
 DateOnly? ouvertureDateFinPeriode = null;
-string? ouvertureMotCle = null;
+List<string>? ouvertureMotCle = null;
 
 // Fermeture
 DateOnly? fermetureDateDebutPeriode = null;
 DateOnly? fermetureDateFinPeriode = null;
-string? fermetureMotCle = null;
+List<string>? fermetureMotCle = null;
 
 // Normalisation des mots-clés AVANT la requête
-string? ouvertureMotCleNorm = ouvertureMotCle?.ToLower();
-string? fermetureMotCleNorm = fermetureMotCle?.ToLower();
+List<string>? ouvertureMotCleNorm = ouvertureMotCle?
+	.Where(m => !string.IsNullOrWhiteSpace(m)) 
+    .Select(m => m.ToLower())
+    .ToList();
+List<string>? fermetureMotCleNorm = fermetureMotCle?
+	.Where(m => !string.IsNullOrWhiteSpace(m)) 
+    .Select(m => m.ToLower())
+    .ToList();
 
-var result = (from T in Tickets
-              join VP in VersionProduits on T.IdVersionProduit equals VP.Id
-              join P  in Produits        on T.IdProduit        equals P.Id
-              join O  in OS              on T.IdOS             equals O.Id
-              join S  in Statuts         on T.IdStatut         equals S.Id
-              where (statutId == null || S.Id == statutId)
-              &&    (produitId == null || T.IdProduit == produitId)
-              &&    (versionId == null || T.IdVersionProduit == versionId)
-              // Ouverture
-              &&    (ouvertureDateDebutPeriode == null || T.CreationDate >= ouvertureDateDebutPeriode)
-              &&    (ouvertureDateFinPeriode == null   || T.CreationDate <= ouvertureDateFinPeriode)
-              &&    (ouvertureMotCleNorm == null || T.DescriptionTexte.ToLower().Contains(ouvertureMotCleNorm))
-              // Fermeture
-              &&    (fermetureDateDebutPeriode == null || T.ResolutionDate >= fermetureDateDebutPeriode)
-              &&    (fermetureDateFinPeriode == null   || T.ResolutionDate <= fermetureDateFinPeriode)
-              &&    (fermetureMotCleNorm == null || T.ResolutionTexte.ToLower().Contains(fermetureMotCleNorm))
-			  
-              select new
-              {
-                  T.Id,
-                  P.NomProduit,
-                  O.NomOS,
-                  VP.NomVersion,
-                  S.NomStatut,
-                  T.CreationDate,
-                  T.ResolutionDate,
-                  T.DescriptionTexte,
-                  T.ResolutionTexte
-              }).Dump();
+var query = (from T in Tickets
+             join VP in VersionProduits on T.IdVersionProduit equals VP.Id
+             join P  in Produits        on T.IdProduit        equals P.Id
+             join O  in OS              on T.IdOS             equals O.Id
+             join S  in Statuts         on T.IdStatut         equals S.Id
+             where (statutId  == null || S.Id == statutId)
+             &&    (produitId == null || T.IdProduit == produitId)
+             &&    (versionId == null || T.IdVersionProduit == versionId)
+             &&    (ouvertureDateDebutPeriode == null || T.CreationDate >= ouvertureDateDebutPeriode)
+             &&    (ouvertureDateFinPeriode   == null || T.CreationDate <= ouvertureDateFinPeriode)
+             &&    (fermetureDateDebutPeriode == null || T.ResolutionDate >= fermetureDateDebutPeriode)
+             &&    (fermetureDateFinPeriode   == null || T.ResolutionDate <= fermetureDateFinPeriode)
+             select new
+             {
+                 T.Id,
+                 P.NomProduit,
+                 O.NomOS,
+                 VP.NomVersion,
+                 S.NomStatut,
+                 T.CreationDate,
+                 T.ResolutionDate,
+                 T.DescriptionTexte,
+                 T.ResolutionTexte
+             });
+
+// Filtre si des mot clés
+var result = query
+    .AsEnumerable()
+    .Where(t =>
+        (ouvertureMotCleNorm == null || ouvertureMotCleNorm.Count == 0 ||
+         ouvertureMotCleNorm.Any(m => t.DescriptionTexte.ToLower().Contains(m)))
+     &&
+        (fermetureMotCleNorm == null || fermetureMotCleNorm.Count == 0 ||
+         fermetureMotCleNorm.Any(m => t.ResolutionTexte.ToLower().Contains(m)))
+    )
+    .Dump();
